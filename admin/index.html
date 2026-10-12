@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ELPAR CMS - Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#131412", "surface-low": "#1b1c1a", "surface-high": "#2a2a28",
+            "primary": "#d4af37", "on-primary": "#131412", "on-surface": "#e4e2df", "outline": "#99907c",
+          },
+          fontFamily: { sans: ["Plus Jakarta Sans", "sans-serif"] }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { background-color: #131412; color: #e4e2df; overscroll-behavior: none; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #131412; }
+    ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+    .hidden-view { display: none !important; }
+  </style>
+</head>
+<body class="font-sans antialiased h-screen flex overflow-hidden selection:bg-primary selection:text-black">
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-[100] px-4 py-2 rounded-lg bg-green-500 text-black font-bold text-sm shadow-xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+    <span class="material-symbols-outlined text-[18px]">info</span>
+    <span id="toast-msg">Notifikasi</span>
+  </div>
+
+  <!-- LOGIN SCREEN (WHITE-LABEL) -->
+  <div id="login-screen" class="fixed inset-0 z-50 bg-surface flex flex-col items-center justify-center p-4">
+    <div class="w-full max-w-md bg-surface-low p-8 rounded-2xl border border-primary/20 shadow-2xl flex flex-col gap-6">
+      <div class="text-center">
+        <span class="material-symbols-outlined text-primary text-[48px]">admin_panel_settings</span>
+        <h1 class="text-2xl font-bold text-primary mt-2">ELPAR CMS</h1>
+        <p class="text-xs text-outline mt-1">Sistem Manajemen Konten Eksklusif</p>
+      </div>
+      <form id="login-form" class="flex flex-col gap-4" autocomplete="off">
+        <div>
+          <label class="text-xs font-bold text-outline uppercase tracking-wider block mb-1">User ID</label>
+          <input type="text" id="elpar-user" required autocomplete="off" class="w-full bg-surface-high border border-outline/30 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-primary text-white" placeholder="Masukkan User ID">
+        </div>
+        <div>
+          <label class="text-xs font-bold text-outline uppercase tracking-wider block mb-1">Server ID (Repository)</label>
+          <input type="text" id="elpar-repo" required autocomplete="off" class="w-full bg-surface-high border border-outline/30 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-primary text-white" placeholder="Nama Repositori">
+        </div>
+        <div>
+          <label class="text-xs font-bold text-outline uppercase tracking-wider block mb-1">Token Access / Password</label>
+          <input type="password" id="elpar-token" required autocomplete="new-password" class="w-full bg-surface-high border border-outline/30 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-primary text-white" placeholder="••••••••••••••••">
+        </div>
+        <button type="submit" id="btn-login" class="w-full bg-primary text-on-primary font-bold py-3 rounded-lg mt-2 active:scale-95 transition-transform">
+          Masuk Dashboard
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD LAYOUT -->
+  <div id="dashboard-screen" class="w-full h-full flex hidden-view">
+    <aside class="w-64 bg-surface-low border-r border-outline/10 flex flex-col">
+      <div class="p-6 border-b border-outline/10">
+        <h2 class="text-xl font-bold text-primary tracking-widest">ELPAR CMS</h2>
+        <p class="text-[10px] text-outline uppercase tracking-widest mt-1">Ultimate v2.0 • Connected</p>
+      </div>
+      <nav class="flex-1 p-4 flex flex-col gap-2 overflow-y-auto">
+        <button onclick="switchTab('products')" class="tab-btn flex items-center gap-3 w-full p-3 rounded-lg text-sm font-semibold text-white bg-surface-high border border-primary/30 transition-colors" data-tab="products">
+          <span class="material-symbols-outlined text-[18px]">inventory_2</span> Katalog Produk
+        </button>
+        <button onclick="switchTab('settings')" class="tab-btn flex items-center gap-3 w-full p-3 rounded-lg text-sm font-semibold text-outline hover:bg-surface-high hover:text-white transition-colors" data-tab="settings">
+          <span class="material-symbols-outlined text-[18px]">settings</span> Global, Hero & Kategori
+        </button>
+        <button onclick="switchTab('links')" class="tab-btn flex items-center gap-3 w-full p-3 rounded-lg text-sm font-semibold text-outline hover:bg-surface-high hover:text-white transition-colors" data-tab="links">
+          <span class="material-symbols-outlined text-[18px]">link</span> Link Toko & Sosmed
+        </button>
+        <button onclick="switchTab('whatsapp')" class="tab-btn flex items-center gap-3 w-full p-3 rounded-lg text-sm font-semibold text-outline hover:bg-surface-high hover:text-white transition-colors" data-tab="whatsapp">
+          <span class="material-symbols-outlined text-[18px]">chat</span> Template WA & Live Preview
+        </button>
+        <button onclick="switchTab('promo')" class="tab-btn flex items-center gap-3 w-full p-3 rounded-lg text-sm font-semibold text-outline hover:bg-surface-high hover:text-white transition-colors" data-tab="promo">
+          <span class="material-symbols-outlined text-[18px]">campaign</span> Manajer Multi-Campaign
+        </button>
+        <button onclick="switchTab('quiz')" class="tab-btn flex items-center gap-3 w-full p-3 rounded-lg text-sm font-semibold text-outline hover:bg-surface-high hover:text-white transition-colors" data-tab="quiz">
+          <span class="material-symbols-outlined text-[18px]">psychology</span> Scent Quiz Manager
+        </button>
+      </nav>
+      <div class="p-4 border-t border-outline/10">
+        <button onclick="commitToGitHub()" id="btn-commit" class="w-full bg-primary text-black font-bold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-yellow-400 active:scale-95 transition-all shadow-lg">
+          <span class="material-symbols-outlined text-[20px]">cloud_upload</span> Commit & Deploy
+        </button>
+        <button onclick="logout()" class="w-full mt-2 text-xs text-red-400 font-bold py-2 hover:underline">Logout Keluar</button>
+      </div>
+    </aside>
+
+    <main class="flex-1 bg-surface p-8 overflow-y-auto relative">
+      <div id="main-loader" class="absolute inset-0 bg-surface/80 z-40 flex flex-col items-center justify-center hidden-view">
+        <span class="material-symbols-outlined text-primary text-4xl animate-spin">refresh</span>
+        <p class="mt-2 text-sm font-bold text-primary">Sinkronisasi Database...</p>
+      </div>
+
+      <!-- TAB 1: PRODUCTS -->
+      <section id="tab-products" class="tab-content">
+        <div class="flex justify-between items-center mb-6">
+          <div>
+            <h2 class="text-2xl font-bold text-white">Katalog Produk</h2>
+            <p class="text-xs text-outline">Kelola daftar parfum, ukuran varian, dan foto produk.</p>
+          </div>
+          <button onclick="openProductModal()" class="bg-primary text-black px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1 active:scale-95">
+            <span class="material-symbols-outlined text-[18px]">add</span> Tambah Produk
+          </button>
+        </div>
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+      </section>
+
+      <!-- TAB 2: SETTINGS, HERO & CATEGORIES -->
+      <section id="tab-settings" class="tab-content hidden-view">
+        <h2 class="text-2xl font-bold text-white mb-6">Global, Hero Banner & Kategori Seri</h2>
+        <div class="bg-surface-low border border-outline/10 p-6 rounded-xl flex flex-col gap-6 max-w-2xl">
+          <div class="flex flex-col gap-4">
+            <h3 class="text-sm font-bold text-primary uppercase tracking-wider border-b border-outline/10 pb-2">Pengaturan Teks Utama (Hero Banner)</h3>
+            <div>
+              <label class="text-xs font-bold text-outline block mb-1">Judul Tagline Utama</label>
+              <input type="text" id="set-hero-title" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white focus:border-primary outline-none">
+            </div>
+            <div>
+              <label class="text-xs font-bold text-outline block mb-1">Sub-Judul</label>
+              <input type="text" id="set-hero-subtitle" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white focus:border-primary outline-none">
+            </div>
+            <div>
+              <label class="text-xs font-bold text-outline block mb-1">Deskripsi Hero</label>
+              <textarea id="set-hero-desc" rows="2" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white focus:border-primary outline-none"></textarea>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-4">
+            <h3 class="text-sm font-bold text-primary uppercase tracking-wider border-b border-outline/10 pb-2">Manajemen Kategori Seri Web</h3>
+            <div id="categories-container" class="flex flex-col gap-2"></div>
+            <button onclick="addCategoryRow()" class="bg-surface-high border border-primary/40 text-primary px-3 py-1.5 rounded font-bold text-xs self-start">+ Tambah Kategori Baru</button>
+          </div>
+
+          <div class="flex flex-col gap-4">
+            <h3 class="text-sm font-bold text-primary uppercase tracking-wider border-b border-outline/10 pb-2">Kontak & Lokasi</h3>
+            <div>
+              <label class="text-xs font-bold text-outline block mb-1">Running Text (Header Atas)</label>
+              <input type="text" id="set-running" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white focus:border-primary outline-none">
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-bold text-outline block mb-1">Nomor WA Order</label>
+                <input type="text" id="set-wa-order" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white focus:border-primary outline-none">
+              </div>
+              <div>
+                <label class="text-xs font-bold text-outline block mb-1">Nomor WA Reseller</label>
+                <input type="text" id="set-wa-reseller" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white focus:border-primary outline-none">
+              </div>
+            </div>
+            <div>
+              <label class="text-xs font-bold text-outline block mb-1">Alamat Toko</label>
+              <input type="text" id="set-address" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white focus:border-primary outline-none">
+            </div>
+          </div>
+          <button onclick="saveSettingsData()" class="bg-primary text-black px-4 py-2 rounded-lg font-bold text-sm self-start">Simpan Pengaturan</button>
+        </div>
+      </section>
+
+      <!-- TAB 3: DYNAMIC LINKS -->
+      <section id="tab-links" class="tab-content hidden-view">
+        <div class="flex justify-between items-center mb-6 max-w-2xl">
+          <div>
+            <h2 class="text-2xl font-bold text-white">Link Toko & Marketplace Dinamis</h2>
+            <p class="text-xs text-outline">Tambah cabang toko online tanpa batasan (Shopee, Lazada, Tokopedia, dll).</p>
+          </div>
+          <button onclick="addLinkRow()" class="bg-primary text-black px-3 py-2 rounded-lg font-bold text-xs flex items-center gap-1">+ Tambah Link</button>
+        </div>
+        <div class="bg-surface-low border border-outline/10 p-6 rounded-xl flex flex-col gap-4 max-w-2xl">
+          <div id="links-container" class="flex flex-col gap-3"></div>
+          <button onclick="saveLinksData()" class="mt-2 bg-primary text-black px-4 py-2 rounded-lg font-bold text-sm self-start">Simpan Perubahan Link</button>
+        </div>
+      </section>
+
+      <!-- TAB 4: WHATSAPP TEMPLATE & LIVE PREVIEW -->
+      <section id="tab-whatsapp" class="tab-content hidden-view">
+        <h2 class="text-2xl font-bold text-white mb-6">Template Pesan WhatsApp & Live Preview</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
+          <div class="bg-surface-low border border-outline/10 p-6 rounded-xl flex flex-col gap-4">
+            <div>
+              <label class="text-xs font-bold text-outline block mb-1">Sapaan Awal (WA Greeting)</label>
+              <textarea id="wa-greeting" rows="3" oninput="updateWALivePreview()" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white focus:border-primary outline-none"></textarea>
+            </div>
+            <div>
+              <label class="text-xs font-bold text-outline block mb-1">Penutup (WA Footer)</label>
+              <textarea id="wa-footer" rows="2" oninput="updateWALivePreview()" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white focus:border-primary outline-none"></textarea>
+            </div>
+            <button onclick="saveWpData()" class="bg-primary text-black px-4 py-2 rounded-lg font-bold text-sm self-start">Simpan Template WA</button>
+          </div>
+          <!-- Live Preview Box -->
+          <div class="bg-surface-high border border-outline/20 p-4 rounded-xl flex flex-col">
+            <div class="flex items-center gap-2 border-b border-outline/10 pb-2 mb-3">
+              <span class="material-symbols-outlined text-green-400">chat</span>
+              <span class="text-xs font-bold text-white uppercase tracking-wider">Simulasi Chat Masuk di Admin WA</span>
+            </div>
+            <div class="bg-[#0b141a] p-4 rounded-xl flex-1 flex flex-col justify-end text-xs font-sans text-gray-200 border border-green-500/20 shadow-inner min-h-[220px]">
+              <div class="bg-[#005c4b] p-3 rounded-lg max-w-[90%] self-end shadow leading-relaxed whitespace-pre-wrap" id="wa-preview-box">Loading preview...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: MULTI-CAMPAIGN MANAGER -->
+      <section id="tab-promo" class="tab-content hidden-view">
+        <div class="flex justify-between items-center mb-6 max-w-4xl">
+          <div>
+            <h2 class="text-2xl font-bold text-white">Manajer Multi-Campaign (Pop-up Bulanan)</h2>
+            <p class="text-xs text-outline">Buat banyak promo dan aktifkan salah satu sesuai periode bulanan.</p>
+          </div>
+          <button onclick="openCampaignModal()" class="bg-primary text-black px-3 py-2 rounded-lg font-bold text-xs">+ Buat Campaign Baru</button>
+        </div>
+        <div id="campaigns-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl"></div>
+      </section>
+
+      <!-- TAB 6: SCENT QUIZ MANAGER -->
+      <section id="tab-quiz" class="tab-content hidden-view">
+        <h2 class="text-2xl font-bold text-white mb-6">Scent Quiz (Kuis Aroma) Manager</h2>
+        <div class="bg-surface-low border border-outline/10 p-6 rounded-xl flex flex-col gap-4 max-w-2xl">
+          <div>
+            <label class="text-xs font-bold text-outline block mb-1">Pertanyaan Utama Kuis</label>
+            <input type="text" id="quiz-question" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white focus:border-primary outline-none">
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-xs font-bold text-outline uppercase">Pilihan Tombol & Mapping Kategori</label>
+              <button onclick="addQuizOptionRow()" class="text-xs bg-primary/20 text-primary px-2 py-1 rounded font-bold">+ Pilihan</button>
+            </div>
+            <div id="quiz-options-container" class="flex flex-col gap-2"></div>
+          </div>
+          <button onclick="saveQuizData()" class="mt-2 bg-primary text-black px-4 py-2 rounded-lg font-bold text-sm self-start">Simpan Kuis</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL: ADD/EDIT PRODUCT -->
+  <div id="product-modal" class="fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4 hidden-view">
+    <div class="bg-surface-low w-full max-w-2xl max-h-[95vh] overflow-y-auto rounded-2xl border border-primary/30 shadow-2xl p-6 flex flex-col gap-4">
+      <div class="flex justify-between items-center border-b border-outline/10 pb-3">
+        <h2 id="modal-title" class="text-xl font-bold text-primary">Tambah/Edit Produk</h2>
+        <button onclick="closeProductModal()" class="text-outline hover:text-white"><span class="material-symbols-outlined">close</span></button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-col gap-3">
+          <input type="hidden" id="prod-id">
+          <div>
+            <label class="text-[10px] font-bold text-outline uppercase">Status</label>
+            <select id="prod-active" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white mt-1"><option value="true">Aktif</option><option value="false">Draft</option></select>
+          </div>
+          <div>
+            <label class="text-[10px] font-bold text-outline uppercase">Nama Parfum</label>
+            <input type="text" id="prod-name" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white mt-1">
+          </div>
+          <div>
+            <label class="text-[10px] font-bold text-outline uppercase">Kategori Seri</label>
+            <select id="prod-category" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white mt-1"></select>
+          </div>
+          <div>
+            <label class="text-[10px] font-bold text-outline uppercase">Deskripsi</label>
+            <textarea id="prod-desc" rows="2" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white mt-1"></textarea>
+          </div>
+          <div>
+            <label class="text-[10px] font-bold text-outline uppercase">Notes</label>
+            <textarea id="prod-notes" rows="2" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white mt-1"></textarea>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="p-3 bg-surface-high border border-dashed border-outline/30 rounded-lg">
+            <label class="text-[10px] font-bold text-outline uppercase">Foto (Maks 500KB)</label>
+            <div class="mt-2 flex flex-col gap-2">
+              <input type="file" id="prod-file" accept=".jpg,.jpeg,.png,.webp" class="text-xs text-outline file:bg-primary file:text-black file:border-0 file:rounded file:px-2 file:py-1">
+              <span class="text-[9px] text-primary" id="upload-status">*Auto upload ke GitHub</span>
+              <input type="text" id="prod-img" readonly class="w-full bg-surface border border-outline/20 rounded px-2 py-1 text-[10px] text-outline">
+              <img id="prod-preview" src="" class="w-20 h-20 object-cover rounded hidden">
+            </div>
+          </div>
+          <div class="p-3 bg-surface-high border border-outline/10 rounded-lg">
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-[10px] font-bold text-outline uppercase">Varian Ukuran & Harga</label>
+              <button type="button" onclick="addVariantRow()" class="text-[10px] bg-primary/20 text-primary px-2 py-1 rounded font-bold">+ Tambah</button>
+            </div>
+            <div id="variants-container" class="flex flex-col gap-2 max-h-32 overflow-y-auto"></div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 mt-4 pt-4 border-t border-outline/10">
+        <button onclick="closeProductModal()" class="px-4 py-2 rounded font-bold text-sm text-outline">Batal</button>
+        <button onclick="saveProduct()" class="px-4 py-2 rounded bg-primary text-black font-bold text-sm">Simpan Produk</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD/EDIT CAMPAIGN -->
+  <div id="campaign-modal" class="fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4 hidden-view">
+    <div class="bg-surface-low w-full max-w-lg rounded-2xl border border-primary/30 shadow-2xl p-6 flex flex-col gap-4">
+      <div class="flex justify-between items-center border-b border-outline/10 pb-3">
+        <h2 id="camp-modal-title" class="text-xl font-bold text-primary">Manajemen Campaign</h2>
+        <button onclick="closeCampaignModal()" class="text-outline"><span class="material-symbols-outlined">close</span></button>
+      </div>
+      <input type="hidden" id="camp-id">
+      <div>
+        <label class="text-xs font-bold text-outline uppercase">Status</label>
+        <select id="camp-active" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white mt-1"><option value="true">Aktif (Tampil di Web)</option><option value="false">Draft / Mati</option></select>
+      </div>
+      <div>
+        <label class="text-xs font-bold text-outline uppercase">Judul Campaign</label>
+        <input type="text" id="camp-title" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white mt-1">
+      </div>
+      <div>
+        <label class="text-xs font-bold text-outline uppercase">Deskripsi</label>
+        <textarea id="camp-desc" rows="2" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-white mt-1"></textarea>
+      </div>
+      <div>
+        <label class="text-xs font-bold text-outline uppercase">Kode Voucher</label>
+        <input type="text" id="camp-voucher" class="w-full bg-surface-high border border-outline/20 rounded px-3 py-2 text-sm text-green-400 font-bold mt-1">
+      </div>
+      <div>
+        <label class="text-xs font-bold text-outline uppercase">Banner Image</label>
+        <input type="file" id="camp-file" accept=".jpg,.jpeg,.png,.webp" class="text-xs text-outline mt-1">
+        <input type="text" id="camp-img" readonly class="w-full bg-surface border border-outline/20 rounded px-2 py-1 text-[10px] text-outline mt-1">
+      </div>
+      <div class="flex justify-end gap-2 mt-4 pt-4 border-t border-outline/10">
+        <button onclick="closeCampaignModal()" class="px-4 py-2 rounded text-outline text-sm">Batal</button>
+        <button onclick="saveCampaign()" class="px-4 py-2 rounded bg-primary text-black font-bold text-sm">Simpan Campaign</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let GITHUB_TOKEN = localStorage.getItem('elpar_token') || '';
+    let GITHUB_USER = localStorage.getItem('elpar_user') || '';
+    let GITHUB_REPO = localStorage.getItem('elpar_repo') || '';
+    const FILE_PATH = 'data/database.json';
+    let dbData = null, dbSha = '', isUploading = false;
+
+    function showToast(msg, isErr = false) {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = msg;
+      t.className = `fixed top-5 left-1/2 -translate-x-1/2 z-[100] px-4 py-2 rounded-lg text-black font-bold text-sm shadow-xl transition-all duration-300 flex items-center gap-2 ${isErr ? 'bg-red-500' : 'bg-green-500'}`;
+      setTimeout(() => t.classList.add('opacity-0', 'pointer-events-none'), 3000);
+    }
+    function showLoader(show) { document.getElementById('main-loader').classList.toggle('hidden-view', !show); }
+    function switchTab(id) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden-view'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('bg-surface-high', 'text-white', 'border-primary/30'));
+      document.getElementById('tab-' + id).classList.remove('hidden-view');
+      document.querySelector(`.tab-btn[data-tab="${id}"]`).classList.add('bg-surface-high', 'text-white', 'border-primary/30');
+    }
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      GITHUB_USER = document.getElementById('elpar-user').value.trim();
+      GITHUB_REPO = document.getElementById('elpar-repo').value.trim();
+      GITHUB_TOKEN = document.getElementById('elpar-token').value.trim();
+      localStorage.setItem('elpar_user', GITHUB_USER);
+      localStorage.setItem('elpar_repo', GITHUB_REPO);
+      localStorage.setItem('elpar_token', GITHUB_TOKEN);
+      initCMS();
+    });
+
+    function logout() { localStorage.clear(); location.reload(); }
+
+    window.onload = () => {
+      if(GITHUB_TOKEN && GITHUB_USER && GITHUB_REPO) {
+        document.getElementById('elpar-user').value = GITHUB_USER;
+        document.getElementById('elpar-repo').value = GITHUB_REPO;
+        document.getElementById('elpar-token').value = GITHUB_TOKEN;
+        initCMS();
+      }
+    };
+
+    async function initCMS() {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FILE_PATH}`, {
+          headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if(!res.ok) throw new Error("Gagal terhubung ke server/repo.");
+        const json = await res.json();
+        dbSha = json.sha;
+        dbData = JSON.parse(decodeURIComponent(escape(atob(json.content))));
+        document.getElementById('login-screen').classList.add('hidden-view');
+        document.getElementById('dashboard-screen').classList.remove('hidden-view');
+        populateAllForms();
+        showToast("Terhubung ke database!");
+      } catch(err) {
+        showToast(err.message, true);
+      }
+    }
+
+    function populateAllForms() {
+      if(!dbData) return;
+      const s = dbData.settings;
+      document.getElementById('set-hero-title').value = s.heroTitle || "";
+      document.getElementById('set-hero-subtitle').value = s.heroSubtitle || "";
+      document.getElementById('set-hero-desc').value = s.heroDesc || "";
+      document.getElementById('set-running').value = s.runningText || "";
+      document.getElementById('set-wa-order').value = s.waOrder || "";
+      document.getElementById('set-wa-reseller').value = s.waReseller || "";
+      document.getElementById('set-address').value = s.address || "";
+
+      document.getElementById('wa-greeting').value = s.waGreeting || "";
+      document.getElementById('wa-footer').value = s.waFooter || "";
+      updateWALivePreview();
+
+      document.getElementById('quiz-question').value = dbData.quiz?.question || "";
+      renderCategories();
+      renderLinks();
+      renderCampaigns();
+      renderQuizOptions();
+      renderProductGrid();
+      populateCategoryDropdown();
+    }
+
+    // --- CATEGORIES ---
+    function renderCategories() {
+      const c = document.getElementById('categories-container');
+      c.innerHTML = '';
+      (dbData.categories || []).forEach((cat, idx) => {
+        c.innerHTML += `
+          <div class="flex gap-2 items-center cat-row">
+            <input type="text" value="${cat.id}" placeholder="ID (ex: women)" class="cat-id w-1/3 bg-surface border border-outline/20 rounded px-2 py-1 text-xs text-white outline-none">
+            <input type="text" value="${cat.name}" placeholder="Nama (ex: Women Series)" class="cat-name w-1/2 bg-surface border border-outline/20 rounded px-2 py-1 text-xs text-white outline-none">
+            <button onclick="this.parentElement.remove()" class="text-red-400"><span class="material-symbols-outlined text-[18px]">close</span></button>
+          </div>
+        `;
+      });
+    }
+    function addCategoryRow() {
+      const c = document.getElementById('categories-container');
+      const row = document.createElement('div');
+      row.className = 'flex gap-2 items-center cat-row';
+      row.innerHTML = `<input type="text" placeholder="ID" class="cat-id w-1/3 bg-surface border border-outline/20 rounded px-2 py-1 text-xs text-white outline-none"><input type="text" placeholder="Nama" class="cat-name w-1/2 bg-surface border border-outline/20 rounded px-2 py-1 text-xs text-white outline-none"><button onclick="this.parentElement.remove()" class="text-red-400"><span class="material-symbols-outlined text-[18px]">close</span></button>`;
+      c.appendChild(row);
+    }
+    function populateCategoryDropdown() {
+      const sel = document.getElementById('prod-category');
+      sel.innerHTML = '';
+      (dbData.categories || []).forEach(cat => {
+        sel.innerHTML += `<option value="${cat.id}">${cat.name}</option>`;
+      });
+    }
+
+    // --- LINKS ---
+    function renderLinks() {
+      const c = document.getElementById('links-container');
+      c.innerHTML = '';
+      (dbData.links || []).forEach(l => {
+        c.innerHTML += `
+          <div class="flex gap-2 items-center link-row">
+            <input type="text" value="${l.name}" placeholder="Nama Toko" class="l-name w-1/3 bg-surface-high border border-outline/20 rounded px-2 py-1 text-xs text-white">
+            <input type="url" value="${l.url}" placeholder="URL Link" class="l-url w-1/2 bg-surface-high border border-outline/20 rounded px-2 py-1 text-xs text-white">
+            <button onclick="this.parentElement.remove()" class="text-red-400"><span class="material-symbols-outlined">close</span></button>
+          </div>
+        `;
+      });
+    }
+    function addLinkRow() {
+      document.getElementById('links-container').innerHTML += `<div class="flex gap-2 items-center link-row"><input type="text" placeholder="Nama Toko" class="l-name w-1/3 bg-surface-high border border-outline/20 rounded px-2 py-1 text-xs text-white"><input type="url" placeholder="URL Link" class="l-url w-1/2 bg-surface-high border border-outline/20 rounded px-2 py-1 text-xs text-white"><button onclick="this.parentElement.remove()" class="text-red-400"><span class="material-symbols-outlined">close</span></button></div>`;
+    }
+    function saveLinksData() {
+      const rows = document.querySelectorAll('.link-row');
+      dbData.links = [];
+      rows.forEach(r => {
+        const n = r.querySelector('.l-name').value.trim();
+        const u = r.querySelector('.l-url').value.trim();
+        if(n && u) dbData.links.push({ name: n, url: u, icon: 'shopping_bag' });
+      });
+      showToast("Link disimpan ke draft.");
+    }
+
+    // --- WA LIVE PREVIEW ---
+    function updateWALivePreview() {
+      const greet = document.getElementById('wa-greeting').value;
+      const footer = document.getElementById('wa-footer').value;
+      const sample = `${greet}1. Wonderose [50ml] (1x) = Rp 150.000%0A%0A*Total Belanja:* Rp 150.000${footer}`;
+      // Decode URL encoding %0A to newline
+      const decoded = decodeURIComponent(sample.replace(/%0A/g, '\n'));
+      document.getElementById('wa-preview-box').innerText = decoded;
+    }
+    function saveWpData() {
+      dbData.settings.waGreeting = document.getElementById('wa-greeting').value;
+      dbData.settings.waFooter = document.getElementById('wa-footer').value;
+      showToast("Template WA disimpan.");
+    }
+
+    // --- CAMPAIGNS ---
+    function renderCampaigns() {
+      const grid = document.getElementById('campaigns-grid');
+      grid.innerHTML = '';
+      (dbData.campaigns || []).forEach((c, idx) => {
+        grid.innerHTML += `
+          <div class="bg-surface-low border border-outline/10 p-4 rounded-xl flex flex-col gap-2 relative">
+            <span class="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded ${c.active ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}">${c.active ? 'Aktif' : 'Draft'}</span>
+            <h3 class="font-bold text-white text-sm">${c.title}</h3>
+            <p class="text-xs text-outline">${c.desc}</p>
+            <p class="text-xs text-primary font-bold">Voucher: ${c.voucher}</p>
+            <div class="flex gap-2 mt-2">
+              <button onclick="editCampaign(${idx})" class="bg-surface-high text-primary px-3 py-1 rounded text-xs font-bold border border-primary/30">Edit</button>
+              <button onclick="deleteCampaign(${idx})" class="text-red-400 text-xs hover:underline">Hapus</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+    let editCampIdx = -1;
+    function openCampaignModal() {
+      editCampIdx = -1;
+      document.getElementById('camp-id').value = "C" + Date.now();
+      document.getElementById('camp-title').value = "";
+      document.getElementById('camp-desc').value = "";
+      document.getElementById('camp-voucher').value = "";
+      document.getElementById('camp-img').value = "";
+      document.getElementById('campaign-modal').classList.remove('hidden-view');
+    }
+    function editCampaign(i) {
+      editCampIdx = i;
+      const c = dbData.campaigns[i];
+      document.getElementById('camp-id').value = c.id;
+      document.getElementById('camp-active').value = c.active ? "true" : "false";
+      document.getElementById('camp-title').value = c.title;
+      document.getElementById('camp-desc').value = c.desc;
+      document.getElementById('camp-voucher').value = c.voucher;
+      document.getElementById('camp-img').value = c.img || "";
+      document.getElementById('campaign-modal').classList.remove('hidden-view');
+    }
+    function closeCampaignModal() { document.getElementById('campaign-modal').classList.add('hidden-view'); }
+    function deleteCampaign(i) { dbData.campaigns.splice(i, 1); renderCampaigns(); showToast("Campaign dihapus."); }
+    function saveCampaign() {
+      const obj = {
+        id: document.getElementById('camp-id').value,
+        active: document.getElementById('camp-active').value === "true",
+        title: document.getElementById('camp-title').value,
+        desc: document.getElementById('camp-desc').value,
+        voucher: document.getElementById('camp-voucher').value,
+        img: document.getElementById('camp-img').value
+      };
+      if(editCampIdx > -1) dbData.campaigns[editCampIdx] = obj; else dbData.campaigns.push(obj);
+      closeCampaignModal();
+      renderCampaigns();
+      showToast("Campaign disimpan.");
+    }
+
+    // --- QUIZ ---
+    function renderQuizOptions() {
+      const c = document.getElementById('quiz-options-container');
+      c.innerHTML = '';
+      (dbData.quiz?.options || []).forEach(o => {
+        c.innerHTML += `
+          <div class="flex gap-2 items-center quiz-opt-row">
+            <input type="text" value="${o.label}" placeholder="Label Pilihan" class="q-label w-3/5 bg-surface border border-outline/20 rounded px-2 py-1 text-xs text-white">
+            <input type="text" value="${o.targetCategory}" placeholder="Target Kategori ID" class="q-cat w-1/3 bg-surface border border-outline/20 rounded px-2 py-1 text-xs text-white">
+            <button onclick="this.parentElement.remove()" class="text-red-400"><span class="material-symbols-outlined text-[18px]">close</span></button>
+          </div>
+        `;
+      });
+    }
+    function addQuizOptionRow() {
+      document.getElementById('quiz-options-container').innerHTML += `<div class="flex gap-2 items-center quiz-opt-row"><input type="text" placeholder="Label Pilihan" class="q-label w-3/5 bg-surface border border-outline/20 rounded px-2 py-1 text-xs text-white"><input type="text" placeholder="Target Kategori ID" class="q-cat w-1/3 bg-surface border border-outline/20 rounded px-2 py-1 text-xs text-white"><button onclick="this.parentElement.remove()" class="text-red-400"><span class="material-symbols-outlined text-[18px]">close</span></button></div>`;
+    }
+    function saveQuizData() {
+      const opts = [];
+      document.querySelectorAll('.quiz-opt-row').forEach(r => {
+        opts.push({ label: r.querySelector('.q-label').value, targetCategory: r.querySelector('.q-cat').value });
+      });
+      dbData.quiz = { question: document.getElementById('quiz-question').value, options: opts };
+      showToast("Kuis disimpan.");
+    }
+
+    // --- PRODUCTS ---
+    function renderProductGrid() {
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = '';
+      (dbData.products || []).forEach((p, idx) => {
+        grid.innerHTML += `
+          <div class="bg-surface-low border border-outline/10 p-3 rounded-xl flex flex-col gap-2 relative">
+            <span class="absolute top-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded ${p.active !== false ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}">${p.active !== false ? 'Aktif' : 'Draft'}</span>
+            <img src="${p.img || ''}" class="w-full h-32 object-cover rounded-lg bg-surface-high">
+            <h3 class="font-bold text-sm text-white truncate">${p.name}</h3>
+            <p class="text-[10px] text-primary uppercase">${p.category}</p>
+            <div class="flex gap-2 mt-1">
+              <button onclick="editProduct(${idx})" class="flex-1 bg-surface-high text-primary py-1 rounded text-xs font-bold border border-primary/30">Edit</button>
+              <button onclick="deleteProduct(${idx})" class="text-red-400 px-2 py-1"><span class="material-symbols-outlined text-[16px]">delete</span></button>
+            </div>
+          </div>
+        `;
+      });
+    }
+    let editProdIdx = -1;
+    function openProductModal() {
+      editProdIdx = -1;
+      document.getElementById('prod-id').value = "P" + Date.now();
+      document.getElementById('prod-name').value = "";
+      document.getElementById('prod-desc').value = "";
+      document.getElementById('prod-notes').value = "";
+      document.getElementById('prod-img').value = "";
+      document.getElementById('prod-preview').classList.add('hidden');
+      document.getElementById('variants-container').innerHTML = '';
+      addVariantRow('30ml', 0);
+      document.getElementById('product-modal').classList.remove('hidden-view');
+    }
+    function editProduct(i) {
+      editProdIdx = i;
+      const p = dbData.products[i];
+      document.getElementById('prod-id').value = p.id;
+      document.getElementById('prod-active').value = p.active !== false ? "true" : "false";
+      document.getElementById('prod-name').value = p.name;
+      document.getElementById('prod-category').value = p.category;
+      document.getElementById('prod-desc').value = p.desc;
+      document.getElementById('prod-notes').value = p.notes;
+      document.getElementById('prod-img').value = p.img;
+      document.getElementById('prod-preview').src = p.img;
+      document.getElementById('prod-preview').classList.remove('hidden');
+
+      const vCont = document.getElementById('variants-container');
+      vCont.innerHTML = '';
+      (p.variants || []).forEach(v => addVariantRow(v.size, v.price));
+      document.getElementById('product-modal').classList.remove('hidden-view');
+    }
+    function closeProductModal() { document.getElementById('product-modal').classList.add('hidden-view'); }
+    function deleteProduct(i) { dbData.products.splice(i, 1); renderProductGrid(); showToast("Produk dihapus."); }
+    function addVariantRow(s='', p='') {
+      document.getElementById('variants-container').innerHTML += `<div class="flex gap-2 items-center variant-row"><input type="text" value="${s}" placeholder="Size" class="v-size w-1/3 bg-surface border border-outline/20 rounded px-2 py-1 text-xs text-white"><input type="number" value="${p}" placeholder="Harga" class="v-price w-1/2 bg-surface border border-outline/20 rounded px-2 py-1 text-xs text-white"><button onclick="this.parentElement.remove()" class="text-red-400">×</button></div>`;
+    }
+    function saveProduct() {
+      const variants = [];
+      document.querySelectorAll('.variant-row').forEach(r => {
+        variants.push({ size: r.querySelector('.v-size').value, price: parseInt(r.querySelector('.v-price').value) || 0 });
+      });
+      const obj = {
+        id: document.getElementById('prod-id').value,
+        active: document.getElementById('prod-active').value === "true",
+        name: document.getElementById('prod-name').value,
+        category: document.getElementById('prod-category').value,
+        desc: document.getElementById('prod-desc').value,
+        notes: document.getElementById('prod-notes').value,
+        img: document.getElementById('prod-img').value,
+        variants: variants
+      };
+      if(editProdIdx > -1) dbData.products[editProdIdx] = obj; else dbData.products.push(obj);
+      closeProductModal();
+      renderProductGrid();
+      showToast("Produk disimpan.");
+    }
+
+    // UPLOAD HANDLER
+    async function uploadToGH(fileInputId, urlInputId, previewId, statusId) {
+      const file = document.getElementById(fileInputId).files[0];
+      if(!file) return;
+      if(file.size > 500*1024) return alert("Maksimal ukuran file 500KB!");
+      
+      const st = document.getElementById(statusId);
+      st.innerText = "Mengunggah...";
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        const base64 = e.target.result.split(',')[1];
+        const path = `data/images/${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g,'')}`;
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`, {
+          method: 'PUT',
+          headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: 'CMS upload', content: base64, branch: 'main' })
+        });
+        if(res.ok) {
+          const url = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${path}`;
+          document.getElementById(urlInputId).value = url;
+          if(previewId) { document.getElementById(previewId).src = url; document.getElementById(previewId).classList.remove('hidden'); }
+          st.innerText = "Berhasil!";
+        } else {
+          st.innerText = "Gagal upload.";
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+    document.getElementById('prod-file').addEventListener('change', () => uploadToGH('prod-file', 'prod-img', 'prod-preview', 'upload-status'));
+    document.getElementById('camp-file').addEventListener('change', () => uploadToGH('camp-file', 'camp-img', null, 'camp-title'));
+
+    function saveSettingsData() {
+      dbData.settings.heroTitle = document.getElementById('set-hero-title').value;
+      dbData.settings.heroSubtitle = document.getElementById('set-hero-subtitle').value;
+      dbData.settings.heroDesc = document.getElementById('set-hero-desc').value;
+      dbData.settings.runningText = document.getElementById('set-running').value;
+      dbData.settings.waOrder = document.getElementById('set-wa-order').value;
+      dbData.settings.waReseller = document.getElementById('set-wa-reseller').value;
+      dbData.settings.address = document.getElementById('set-address').value;
+      
+      const cats = [];
+      document.querySelectorAll('.cat-row').forEach(r => {
+        cats.push({ id: r.querySelector('.cat-id').value, name: r.querySelector('.cat-name').value });
+      });
+      dbData.categories = cats;
+      showToast("Pengaturan disimpan.");
+    }
+
+    async function commitToGitHub() {
+      if(!confirm("Deploy perubahan ke web utama?")) return;
+      showLoader(true);
+      try {
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(dbData, null, 2))));
+        const body = { message: "CMS Ultimate Update", content: content, branch: "main" };
+        if(dbSha) body.sha = dbSha;
+
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FILE_PATH}`, {
+          method: 'PUT',
+          headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        if(res.ok) {
+          const json = await res.json();
+          dbSha = json.content.sha;
+          showToast("DEPLOY SUKSES! Vercel sedang memperbarui web.");
+        } else {
+          throw new Error("Gagal commit ke GitHub.");
+        }
+      } catch(err) {
+        showToast(err.message, true);
+      } finally {
+        showLoader(false);
+      }
+    }
+  </script>
+</body>
+</html>
