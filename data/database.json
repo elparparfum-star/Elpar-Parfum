@@ -81,15 +81,34 @@
     {
       "id": "P1791782870189",
       "active": true,
-      "name": "Scandalaus",
-      "category": "Strong",
-      "desc": "Musk , woody",
-      "notes": "Manggo Hint",
-      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1791782888059_sg1113420122110y3uhr3qayzjvc5.jpg",
+      "name": "L' Royale",
+      "category": "men",
+      "desc": "Deep, mysterious, luxurious, and bold",
+      "notes": "• Top Notes: Black cherry, saffron, and bergamot (sweet, slightly tart, and warm-spicy).\n• Middle Notes: Cinnamon, nutmeg, marigold, jasmine, and praline (rich floral-gourmand sweetness with warm spices).\n• Base Notes: Amber, musk, tonka bean, and sandalwood (deep, woody, and mystical finish).\n",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1791805529503_LRoyale.jpeg",
       "variants": [
         {
           "size": "30ml",
-          "price": 100000
+          "price": 54000
+        },
+        {
+          "size": "50ml",
+          "price": 89000
+        }
+      ]
+    },
+    {
+      "id": "P1791804929548",
+      "active": true,
+      "name": "Pink Beach",
+      "category": "unisex",
+      "desc": "Pink Beach adalah parfum dengan karakter aroma fruity, fresh, aquatic, dan powdery yang terinspirasi dari suasana liburan musim panas di resor pantai yang mewah",
+      "notes": "• Top Notes (Aroma awal): Kiwi, Rhubarb (sejenis tangkai tanaman beraroma segar-tart), dan Pink Pepper.\n• Middle Notes (Aroma tengah): Jasmine (melati), Watermelon (semangka), dan Cyclamen.\n• Base Notes (Aroma akhir): Powdery notes, Sandalwood (kayu cendana), Tonka bean, Cedar, Musk, dan Juniper berries",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1791805322115_PinkBeach.jpeg",
+      "variants": [
+        {
+          "size": "60ml",
+          "price": 89000
         }
       ]
     }
