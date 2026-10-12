@@ -77,5 +77,21 @@
       }
     ]
   },
-  "products": []
+  "products": [
+    {
+      "id": "P1791782870189",
+      "active": true,
+      "name": "Scandalaus",
+      "category": "Strong",
+      "desc": "Musk , woody",
+      "notes": "Manggo Hint",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1791782888059_sg1113420122110y3uhr3qayzjvc5.jpg",
+      "variants": [
+        {
+          "size": "30ml",
+          "price": 100000
+        }
+      ]
+    }
+  ]
 }
