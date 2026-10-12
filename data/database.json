@@ -111,6 +111,75 @@
           "price": 89000
         }
       ]
+    },
+    {
+      "id": "P1791806377000",
+      "active": true,
+      "name": "In Leather",
+      "category": "men",
+      "desc": "Aromatic Fruity yang memadukan Parfum dengan kesegaran buah, kehangatan rempah, dan kemasan aroma kulit (leather) yang lembut.",
+      "notes": "• Top Notes (Aroma Pembuka): Yuzu, nanas, apel merah, jeruk bali (grapefruit), melon, jahe, dan bergamot. Menghasilkan kesan manis, segar, dan ada sedikit sensasi warm spicy dari jahe.\n• Middle Notes (Aroma Tengah): Nilam (patchouli), pala, lada, kapulaga, lavender, dan osmanthus (atau oakmoss). Memberikan sentuhan aromatik dan rempah hangat yang mulai menyeimbangkan kesegaran buah.\n• Base Notes (Aroma Dasar): Kulit (leather), musk, amber, kayu cendana (sandalwood), vetiver, dan kayu cedar. Memberikan karakter maskulin, hangat, dan mewah.",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1791806396677_blackseries.jpeg",
+      "variants": [
+        {
+          "size": "30ml",
+          "price": 54000
+        },
+        {
+          "size": "50ml",
+          "price": 86000
+        }
+      ]
+    },
+    {
+      "id": "P1791806723328",
+      "active": true,
+      "name": "Wonderose",
+      "category": "women",
+      "desc": "Wonder Rose memiliki wangi floral fruity yang didominasi oleh perpaduan aroma buah yang segar dan manis, kelembutan bunga mawar, serta kehangatan vanila.",
+      "notes": "• Top Notes (Aroma Awal): Buah-buahan merah (red fruits), pir (pear), atau raspberry yang memberikan kesan ceria, juicy, dan penuh energi.\n• Middle Notes (Aroma Tengah): Bunga mawar (rose) dan sentuhan bunga lain yang menghadirkan kesan feminin serta lembut.\n• Base Notes (Aroma Akhir): Vanila dan musk yang meninggalkan jejak aroma manis, hangat, dan nyaman di kulit",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1791806785172_WonderoseProduk.jpeg",
+      "variants": [
+        {
+          "size": "30ml - EDT",
+          "price": 48000
+        },
+        {
+          "size": "30ml - EDP",
+          "price": 57000
+        },
+        {
+          "size": "30ml - Extrait",
+          "price": 69000
+        },
+        {
+          "size": "50ml - EDT",
+          "price": 76000
+        },
+        {
+          "size": "50ml - EDP",
+          "price": 89000
+        },
+        {
+          "size": "50ml - Extrait",
+          "price": 109000
+        }
+      ]
+    },
+    {
+      "id": "P1791806949446",
+      "active": true,
+      "name": "English Garden - 40 ml",
+      "category": "unisex",
+      "desc": "Aroma bunga gardenia (kaca piring) terkenal manis, lembut, creaky (seperti krim), segar, dan memiliki nuansa floral-white yang elegan serta feminin",
+      "notes": "Floral & Fruity",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1791807055491_EnglishGarden.jpeg",
+      "variants": [
+        {
+          "size": "40ml",
+          "price": 69000
+        }
+      ]
     }
   ]
 }
