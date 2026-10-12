@@ -53,7 +53,7 @@
       "title": "GRAND OPENING!",
       "desc": "Dapatkan penawaran spesial untuk pembelian perdana Anda.",
       "voucher": "ELPARHYPE",
-      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1791785927325_sg1113420122110y3uhr3qayzjvc5.jpg"
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1791807474938_sosexy.jpeg"
     }
   ],
   "quiz": {
@@ -178,6 +178,21 @@
         {
           "size": "40ml",
           "price": 69000
+        }
+      ]
+    },
+    {
+      "id": "P1791807292515",
+      "active": true,
+      "name": "So Sexy - 35 ml",
+      "category": "women",
+      "desc": "So Sexy memiliki karakter aroma Floral Fruity Gourmand yang manis, segar, ceria, dan lembut",
+      "notes": "• Top Notes : Buah segar dan bergamot yang memberikan kesan ceria serta penuh energi.\n• Heart Notes : Buah apel hijau yang manis dan juicy, serta sentuhan bunga lembut.\n• Base Notes : Whipped cream (krim kocok) yang memberikan sentuhan creamy, manis, dan menggoda.",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1791807433760_sosexy.jpeg",
+      "variants": [
+        {
+          "size": "30ml",
+          "price": 54000
         }
       ]
     }
