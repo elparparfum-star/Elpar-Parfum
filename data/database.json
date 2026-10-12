@@ -1,0 +1,81 @@
+{
+  "settings": {
+    "runningText": "DIRECT WA ORDERING • NO REGISTRATION REQUIRED",
+    "waOrder": "6281222112100",
+    "waReseller": "6281222112100",
+    "waGreeting": "Halo Admin ELPAR, pesanan saya:%0A",
+    "waFooter": "%0AMohon info ongkir ya. Terima kasih!",
+    "address": "Perum Griya Utami 2 B18",
+    "mapsUrl": "https://maps.google.com/?q=Perum+Griya+Utami+2+B18",
+    "heroTitle": "Perfume it's your identity",
+    "heroSubtitle": "Aroma Mewah Asli. Ekspresikan Identitas Diri.",
+    "heroDesc": "Koleksi Eau De Parfum & Extrait De Parfum eksklusif dengan ketahanan tinggi. Pemesanan mudah & konsultasi langsung via WhatsApp Concierge."
+  },
+  "categories": [
+    {
+      "id": "women",
+      "name": "Women Series"
+    },
+    {
+      "id": "men",
+      "name": "Men Series"
+    },
+    {
+      "id": "unisex",
+      "name": "Unisex Series"
+    },
+    {
+      "id": "Strong",
+      "name": "Extreamly"
+    }
+  ],
+  "links": [
+    {
+      "name": "Instagram Official",
+      "url": "https://www.instagram.com/elparofficial/",
+      "icon": "photo_camera"
+    },
+    {
+      "name": "Shopee Store",
+      "url": "https://shopee.co.id/elpar",
+      "icon": "shopping_bag"
+    },
+    {
+      "name": "Lazada Flagship",
+      "url": "https://lazada.co.id",
+      "icon": "storefront"
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "c1",
+      "active": true,
+      "title": "GRAND OPENING!",
+      "desc": "Dapatkan penawaran spesial untuk pembelian perdana Anda.",
+      "voucher": "ELPARHYPE",
+      "img": ""
+    }
+  ],
+  "quiz": {
+    "question": "Pilih Sensasi Aroma Impian Anda:",
+    "options": [
+      {
+        "label": "Manis & Floral (Romantis)",
+        "targetCategory": "women"
+      },
+      {
+        "label": "Maskulin & Woody (Kuat)",
+        "targetCategory": "men"
+      },
+      {
+        "label": "Segar & Aquatic (Clean)",
+        "targetCategory": "unisex"
+      },
+      {
+        "label": "Strong & Musk",
+        "targetCategory": "Extreamly"
+      }
+    ]
+  },
+  "products": []
+}
