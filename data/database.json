@@ -315,6 +315,25 @@
           "price": 54000
         }
       ]
+    },
+    {
+      "id": "P1792598453601",
+      "active": true,
+      "name": "Black Amber",
+      "category": "men",
+      "desc": "Aroma klasik dan populer yang memiliki karakter aroma Amber Floral / Warm Oriental yang manis, hangat, dan sensual.",
+      "notes": "1. Top Notes (Aroma Pembuka)\nSaat pertama kali disemprotkan, terasa sensasi buah yang juicy, manis, dan sedikit segar:\n- Mandarin Orange (Jeruk Mandarin)\n- Passion Fruit (Markisa)\n\n2. Middle Notes (Aroma Inti)\nMemasuki pertengahan, muncul keharuman bunga yang eksotis dan kaya (rich):\n- Tiare Flower (Bunga kamboja khas Pasifik)\n- Jasmine (Melati)\n\n3. Base Notes (Aroma Penutup / Dry Down)\nAroma penutup yang menempel di kulit memberikan nuansa hangat, manis creamy, dan mewah yang bertahan lama:\n- Amber\n- Vanilla\n- Musk",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792598474059_BlackAmber.jpeg",
+      "variants": [
+        {
+          "size": "30ml - EDP",
+          "price": 54000
+        },
+        {
+          "size": "50ml - EDP",
+          "price": 86000
+        }
+      ]
     }
   ]
 }
