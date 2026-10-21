@@ -300,6 +300,21 @@
           "price": 97000
         }
       ]
+    },
+    {
+      "id": "P1792598208476",
+      "active": true,
+      "name": "Aigner Black",
+      "category": "men",
+      "desc": "Maskulin",
+      "notes": "Tes",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792598224729_240178.jpg",
+      "variants": [
+        {
+          "size": "30ml",
+          "price": 54000
+        }
+      ]
     }
   ]
 }
