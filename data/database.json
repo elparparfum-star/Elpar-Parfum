@@ -173,7 +173,7 @@
       "category": "unisex",
       "desc": "Aroma bunga gardenia (kaca piring) terkenal manis, lembut, creaky (seperti krim), segar, dan memiliki nuansa floral-white yang elegan serta feminin",
       "notes": "Floral & Fruity",
-      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1791807055491_EnglishGarden.jpeg",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792601154541_240645.jpg",
       "variants": [
         {
           "size": "40ml",
@@ -332,6 +332,76 @@
         {
           "size": "50ml - EDP",
           "price": 86000
+        }
+      ]
+    },
+    {
+      "id": "P1792601183993",
+      "active": true,
+      "name": "Baby Love",
+      "category": "women",
+      "desc": "Sweet & Floral",
+      "notes": "",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792601199196_240637.jpg",
+      "variants": [
+        {
+          "size": "30ml-EDT",
+          "price": 43000
+        },
+        {
+          "size": "30ml-EDP",
+          "price": 54000
+        },
+        {
+          "size": "30ml-Extrait",
+          "price": 61000
+        },
+        {
+          "size": "55ml-EDT",
+          "price": 67000
+        },
+        {
+          "size": "55ml-EDP",
+          "price": 86000
+        },
+        {
+          "size": "55ml-Extrait",
+          "price": 97000
+        }
+      ]
+    },
+    {
+      "id": "P1792601349276",
+      "active": true,
+      "name": "Orchid",
+      "category": "unisex",
+      "desc": "Fresh",
+      "notes": "",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792601355285_240643.jpg",
+      "variants": [
+        {
+          "size": "30ml-EDT",
+          "price": 43000
+        },
+        {
+          "size": "30ml-EDP",
+          "price": 54000
+        },
+        {
+          "size": "30ml-Extrait",
+          "price": 97000
+        },
+        {
+          "size": "55ml-EDT",
+          "price": 67000
+        },
+        {
+          "size": "55ml-EDP",
+          "price": 86000
+        },
+        {
+          "size": "55ml-Extrait",
+          "price": 97000
         }
       ]
     }
