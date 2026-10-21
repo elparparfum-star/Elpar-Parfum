@@ -195,6 +195,111 @@
           "price": 54000
         }
       ]
+    },
+    {
+      "id": "P1792596950360",
+      "active": true,
+      "name": "Summer - Gardenia",
+      "category": "unisex",
+      "desc": "aroma White Floral & Gourmand Sweet yang anggun, manis, dan lembut",
+      "notes": "Top Notes (Aroma Pembuka): Pear Blossom (Bunga Pir), Red Berries, dan Italian Mandarin.\n\nMiddle Notes (Aroma Inti): White Gardenia (Bunga Kaca Piring), Jasmine (Melati), dan Frangipani (Kamboja).\n\nBase Notes (Aroma Penutup): Brown Sugar (Gula Merah/Caramelized Sweetness) dan Patchouli.",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792597016407_Gardenia.jpeg",
+      "variants": [
+        {
+          "size": "30ml-EDT",
+          "price": 43000
+        },
+        {
+          "size": "30ml-EDP",
+          "price": 54000
+        },
+        {
+          "size": "30ml-Extrait",
+          "price": 61000
+        },
+        {
+          "size": "55ml-EDT",
+          "price": 67000
+        },
+        {
+          "size": "55ml-EDP",
+          "price": 86000
+        },
+        {
+          "size": "55ml-Extrait",
+          "price": 97000
+        }
+      ]
+    },
+    {
+      "id": "P1792597216633",
+      "active": true,
+      "name": "Summer - Pinky",
+      "category": "women",
+      "desc": "aroma Floral Fruity yang manis, ceria, segar, dan flirty",
+      "notes": "Top Notes  :Apel, Aquatic\n\nMiddle Notes : Floral Accord / Bunga-bungaan\n\nBase Notes : Vanila",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792597349282_Pinky.jpeg",
+      "variants": [
+        {
+          "size": "30ml-EDT",
+          "price": 42000
+        },
+        {
+          "size": "30ml-EDP",
+          "price": 48000
+        },
+        {
+          "size": "30ml-Extrait",
+          "price": 55000
+        },
+        {
+          "size": "55ml-EDT",
+          "price": 66000
+        },
+        {
+          "size": "55ml-EDT",
+          "price": 76000
+        },
+        {
+          "size": "55ml-Extrait",
+          "price": 87000
+        }
+      ]
+    },
+    {
+      "id": "P1792597490204",
+      "active": true,
+      "name": "Summer - Yellow Amber",
+      "category": "women",
+      "desc": "Karakter aromanya dirancang sangat segar, manis-tropis, dan breezy, sempurna untuk cuaca hangat",
+      "notes": "Top Notes (Aroma Pembuka)\nSaat pertama disemprotkan, terasa sensasi buah sitrus yang segar, sparkling, dan membangkitkan semangat:\n- Bergamot\n- Mandarin Orange (Jeruk Mandarin)\n- Neroli\n\n2. Middle Notes (Aroma Inti)\nMemasuki pertengahan, muncul aroma bunga-bungaan putih yang lembut dan nuansa air yang menyegarkan:\n- Orange Blossom (Bunga Jeruk)\n- Water Lily (Teratai)\n- Wild Rose (Mawar Liar)\n- Honeysuckle\n\n3. Base Notes (Aroma Penutup / Dry Down)\nAroma penutup memberikan kesan hangat, sedikit manis, dan feminin di kulit:\n- Musk\n- Vanilla Orchid\n- Teak Wood (Kayu Jati)",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792597591692_YellowAmber.jpeg",
+      "variants": [
+        {
+          "size": "30ml-EDT",
+          "price": 43000
+        },
+        {
+          "size": "30ml-EDP",
+          "price": 54000
+        },
+        {
+          "size": "30ml-Extrait",
+          "price": 61000
+        },
+        {
+          "size": "55ml-EDT",
+          "price": 67000
+        },
+        {
+          "size": "55ml-EDP",
+          "price": 86000
+        },
+        {
+          "size": "55ml-Extrait",
+          "price": 97000
+        }
+      ]
     }
   ]
 }
