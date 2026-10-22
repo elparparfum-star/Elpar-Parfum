@@ -474,6 +474,106 @@
           "price": 97000
         }
       ]
+    },
+    {
+      "id": "P1792647685793",
+      "active": true,
+      "name": "Violet Blossom",
+      "category": "women",
+      "desc": "Aroma nuansa bunga sakura (cherry blossom), magnolia, serta kehangatan manis tonka bean dan vanilla/almond. Banyak yang menggambarkan aromanya memiliki sentuhan manis seperti grape/berry yang agak dark namun tetap lembut.",
+      "notes": "Top Notes (Aroma Awal):Cherry Blossom (Bunga Sakura)Karakter: Begitu disemprotkan, aromanya memberikan kesegaran bunga manis yang slightly fruity seperti buah ceri atau anggur manis (juicy/fizzy).Middle Notes (Aroma Tengah):Magnolia & Heliotrope   Karakter: Setelah beberapa saat, wangi bunganya menjadi lebih dominan, feminin, dan sedikit creamy.Base Notes (Aroma Akhir / Dry-Down):Tonka Bean, Almond, & Vanilla   Karakter: Menyisa aroma manis hangat, agak powdery, berkesan nutty dan nyaman di kulit.",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792647695125_VioletBlossom.jpeg",
+      "variants": [
+        {
+          "size": "30ml-EDP",
+          "price": 54000
+        },
+        {
+          "size": "50ml-EDP",
+          "price": 86000
+        }
+      ]
+    },
+    {
+      "id": "P1792647843388",
+      "active": true,
+      "name": "Candylious",
+      "category": "unisex",
+      "desc": "Fruity Floral Gourmand dengan karakter aroma yang manis memikat, mirip permen, buah-buahan segar, serta sentuhan creamy.",
+      "notes": "Top Notes (Aroma Awal):Strawberries, Red Fruits, Bergamot, Pear, dan Fruity Accord.   Karakter: Langsung memberikan sensasi manis-asam yang ceria, juicy, dan segar khas buah beri serta pir.   Middle Notes (Aroma Tengah):Jasmine, Orange Blossom, Rose, dan Caramel.   Karakter: Wangi buah melunak dan berpadu dengan kelembutan bunga putih serta sentuhan karamel manis yang menggoda.   Base Notes (Aroma Akhir / Dry-Down):Vanilla, White Musk, Amber, Sandalwood, dan Tonka Bean.   Karakter: Penutup aromanya terasa hangat, creamy, dan lembut manis seperti vanila, membuat aromanya nyaman dan tahan lama di kulit.",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792647851386_Candylious.jpeg",
+      "variants": [
+        {
+          "size": "50ml-EDT",
+          "price": 67000
+        },
+        {
+          "size": "50ml-EDP",
+          "price": 86000
+        },
+        {
+          "size": "50ml-Extrait",
+          "price": 97000
+        }
+      ]
+    },
+    {
+      "id": "P1792647970260",
+      "active": true,
+      "name": "Juicy Camino",
+      "category": "unisex",
+      "desc": "Floral Fruity Gourmand yang manis, ceria, dan berkesan mewah",
+      "notes": "Top Notes (Aroma Awal):Wild Berries (Buah Beri Liar) dan Mandarin (Jeruk Mandarin).   Karakter: Begitu disemprotkan, langsung tercium aroma buah yang segar, juicy, manis, dan ceria.   Middle Notes (Aroma Tengah):Honeysuckle (Bunga Seroja/Honeysuckle), Gardenia, dan Jasmine.   Karakter: Setelah beberapa saat, aroma buahnya berpadu dengan keharuman bunga putih (white florals) yang memberikan kesan feminin, anggun, dan lembut.Base Notes (Aroma Akhir / Dry-Down):Caramel (Karamel), Vanilla, Praline, Amber, dan Sandalwood.   Karakter: Bagian inilah yang paling disukai banyak orang. Aroma akhirnya meninggalkan jejak yang manis creamy seperti makanan (gourmand), hangat, lezat, dan menempel lama di kulit.",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792647982879_JuicyCamino.jpeg",
+      "variants": [
+        {
+          "size": "50ml-EDT",
+          "price": 67000
+        },
+        {
+          "size": "50ml-EDP",
+          "price": 86000
+        },
+        {
+          "size": "50ml-Extrait",
+          "price": 97000
+        }
+      ]
+    },
+    {
+      "id": "P1792648154811",
+      "active": true,
+      "name": "Blooming",
+      "category": "women",
+      "desc": "Aroma feminim, elegant, floral",
+      "notes": "Top Notes (Aroma Awal):Jasmine (Kuncup Melati)Karakter: Langsung dibuka dengan wangi melati yang segar, murni, dan sedikit hijau (green/powdery) khas kelopak bunga asli.   Middle Notes (Aroma Tengah / Jantung Parfum):Tuberose (Sedap Malam / Bunga Sedap Malam Alami)Karakter: Begitu memasuki fase pertengahan, wangi sedap malam mulai mendominasi. Memberikan kesan creamy, tebal, feminin, dan sangat mewah.Base Notes (Aroma Akhir / Dry-Down):Rangoon Creeper (Ceguk / Bunga Ceguk dari India)   Karakter: Bunga unik ini memberikan sentuhan akhir yang sedikit powdery, lembut, manis floral yang unik, dan membuat aromanya bertahan dengan anggun di kulit.",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792648163058_blooming.jpeg",
+      "variants": [
+        {
+          "size": "30ml-EDT",
+          "price": 43000
+        },
+        {
+          "size": "30ml-EDP",
+          "price": 54000
+        },
+        {
+          "size": "30ml-Extrait",
+          "price": 61000
+        },
+        {
+          "size": "50ml-EDT",
+          "price": 67000
+        },
+        {
+          "size": "50ml-EDP",
+          "price": 86000
+        },
+        {
+          "size": "50ml-Extrait",
+          "price": 97000
+        }
+      ]
     }
   ]
 }
