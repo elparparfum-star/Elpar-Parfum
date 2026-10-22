@@ -404,6 +404,76 @@
           "price": 97000
         }
       ]
+    },
+    {
+      "id": "P1792646812149",
+      "active": true,
+      "name": "Moonshine",
+      "category": "women",
+      "desc": "Aroma Floral Fruity yang menyegarkan, ceria, manis, dan manis buah (juicy/sweet). Aromanya sering digambarkan seperti kombinasi permen buah, fruit punch, atau minuman soda buah berkarbonasi yang manis feminin.",
+      "notes": "Top Notes  :Strawberry, Black Currant, Red Apple, dan Citruses (Jeruk).\n\nAroma awal langsung meledak dengan kesegaran stroberi dan stroberi hitam (black currant) yang asam-manis dan juicy.\n\nMiddle Notes : Sweet Pea, Freesia, Jasmine, dan Rose.\n\nSetelah beberapa menit, nuansa bunga manis seperti sweet pea dan freesia mulai keluar, memberikan sentuhan lembut dan feminin tanpa menghilangkan karakter buahnya.\n\nBase Notes : Raspberry, Musk, Sandalwood (Cendana), dan Amber.\n\nPada dry down (aroma akhir), tersisa wangi raspberry yang berpadu dengan musk dan kayu-kayuan hangat, membuat aromanya tetap manis dan menempel lembut di kulit.",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792646903979_Moonshine.jpeg",
+      "variants": [
+        {
+          "size": "30ml-EDT",
+          "price": 43000
+        },
+        {
+          "size": "30ml-EDP",
+          "price": 54000
+        },
+        {
+          "size": "30ml-Extrait",
+          "price": 61000
+        },
+        {
+          "size": "55ml-EDT",
+          "price": 67000
+        },
+        {
+          "size": "55ml-EDP",
+          "price": 86000
+        },
+        {
+          "size": "55ml-Extrait",
+          "price": 97000
+        }
+      ]
+    },
+    {
+      "id": "P1792646991048",
+      "active": true,
+      "name": "Mon Paris",
+      "category": "women",
+      "desc": "Aromanya menggambarkan nuansa romantisme kota Paris—perpaduan antara kesegaran buah yang manis, bunga putih yang elegan, dan sentuhan patchouli yang memikat serta sensual.",
+      "notes": "Top Notes (Aroma Awal saat Disemprotkan):\n\nStrawberry, Raspberry, Pear (Pir), Calabrian Bergamot, Calone, Orange, dan Tangerine.\n\nKarakter: Langsung terasa meledak dengan kesegaran buah-buahan yang juicy, asam-manis, dan sangat menggoda (vibrant & fruity).\n\nMiddle Notes (Aroma Tengah / Jantung Parfum):\n\nPeony, Datura, Jasmine Sambac, Chinese Jasmine, dan Orange Blossom.\n\nKarakter: Setelah aroma buah melunak, muncul wangi bunga-bunga putih (white florals) yang feminin, bersinar, dan mewah. Bunga Datura memberikan sentuhan unik yang manis dan sedikit misterius.\n\nBase Notes (Aroma Akhir / Dry-Down):\n\nIndonesian Patchouli Leaf, White Musk, Vanilla, Ambrosan, Cedar, Moss, dan Patchouli.\n\nKarakter: Penutup aromanya sangat hangat, elegan, dan tahan lama. Kombinasi white musk dan patchouli khas Indonesia memberikan kesan yang clean, sedikit earthy, namun tetap manis dan sensual.",
+      "img": "https://raw.githubusercontent.com/elparparfum-star/Elpar-Parfum/main/data/images/1792647034865_MonParis.jpeg",
+      "variants": [
+        {
+          "size": "30ml-EDT",
+          "price": 43000
+        },
+        {
+          "size": "30ml-EDP",
+          "price": 54000
+        },
+        {
+          "size": "30ml-Extrait",
+          "price": 61000
+        },
+        {
+          "size": "55ml-EDT",
+          "price": 67000
+        },
+        {
+          "size": "55ml-EDP",
+          "price": 86000
+        },
+        {
+          "size": "55ml-Extrait",
+          "price": 97000
+        }
+      ]
     }
   ]
 }
